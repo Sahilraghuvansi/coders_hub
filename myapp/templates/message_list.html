@@ -1,0 +1,26 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <h1>Messages</h1>
+    <tr style="font-size: 20px;">
+        <th style="border: 1px solid black;">created_at:</th>
+        <th style="border: 1px solid black;">Message:</th>
+        <th style="border: 1px solid black;">Action:</th>
+
+    </tr>
+    </p>
+    {% for x in msg %}
+    <p>
+        <tr>
+            <td style="border: 1px solid black;">{{x.Created_at}}</td>
+            <td style="border: 1px solid black;">{{x.mesg}}</td>
+
+                 <td>
+                <a href="/reply/{{x.Sender_id}}" ><button class="btn btn-success "  style="background-color: #4c91af;" type="button">Reply:</button></a>
+                </td>
+            </td>
+        </tr>
+    </p>
+            
+    {% endfor %}
+</table>

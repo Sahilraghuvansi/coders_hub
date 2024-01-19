@@ -1,0 +1,247 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #c7ced6;
+            padding: 20px;
+        }
+
+        h5 {
+            color: #343a40;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 16px;
+            background: rgba(57, 55, 55, 0.343);
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(57, 55, 55, 0.343);
+        }
+
+        tr:hover {
+            background-color: rgba(243, 243, 243, 0.17);
+        }
+
+        .btn-container {
+            
+            margin-top: 20px;
+        }
+
+        .btn-success {
+            margin-right: 10px;
+        }
+
+        img.profile-image {
+            height: 95px;
+            width: 95px;
+            border-radius: 50%;
+            float: left;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="/verify_phone_number">cliek here to verify number
+    </a>
+
+    <div class="btn-container">
+        <a href="my" class="btn btn-success">Add Image</a>
+    </div>
+
+    <div>
+        <img src="{{img2.files.url }}" alt="Profile Image" class="profile-image"></a>
+        <!-- {% for image in img %} -->
+
+        <a href="update_profile/{{user.id}}">
+            <img src="/media/{{ image.image}}" alt="Profile Image" style="height: 95px; width: 95px; border-radius:50%; float: right;"></a>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h5><p style="float: right;">You are logged in as {{ user.username}}</p> </h5>
+        <!-- {% endfor %} -->
+
+        <!-- Other content remains unchanged -->
+
+    </div>
+
+    <script>
+        window.onload = function () {
+            alert("Welcome to the page!");
+            // You can replace alert with other pop-up methods like a modal or a custom-designed pop-up.
+        };
+    </script>
+</body>
+
+<!-- <body>
+    
+     <a href="my"> <button class="btn btn-success " type="button">Add_image:</button></a>   
+
+
+
+     <img src="{{img2.files.url }}" alt="Profile Image" style="height: 95px; width: 95px; border-radius:50%; float: left;"></a>
+{% for image in img %} 
+         
+
+
+<a href="update_profile/{{user.id}}">
+     <img src="/media/{{ image.image}}" alt="Profile Image" style="height: 95px; width: 95px; border-radius:50%; float: right;"></a>
+     <br>
+    <br>
+    <br>
+    <br>
+ <h5><p style="float: right;"> you login as {{ user.username}}</p> </h5>  -->
+<!-- {% endfor %} --> 
+
+
+     <!-- <a href="Inbox/{{user.id}}"> <button class="btn btn-success " type="button">Inbox:</button></a> -->
+     <br>
+     <br>
+     <!-- <a href="/image/{{user.id}}"> <button class="btn btn-success " type="button">upload</button></a> -->
+   
+     <!-- <a href="inbox"> <button class="btn btn-success " type="button">Inbox:</button></a> -->
+
+     {% if user.user_type == "2" %}
+
+     <p>
+        
+          <a href="add_project"> <button class="btn btn-success " type="button">Add_Project:</button></a>
+          <a href="/inbox"> <button class="btn btn-success " type="button">Inbox</button></a>
+          <a href="freelancers_list"> <button class="btn btn-success " type="button">freelancers:</button></a>
+     <table style="font-size: 20px; background: rgba(57, 55, 55, 0.343);">
+          <tr style="font-size: 20px; background: rgba(57, 55, 55, 0.343);">
+               <th style="border: 1px solid black;">ID</th>
+               <th style="border: 1px solid black;">Title:</th>
+               <!-- <th style="border: 1px solid black;">Username:</th>
+               <th style="border: 1px solid black;"> Email:</th> -->
+               <th style="border: 1px solid black;">created_by:</th>
+               <th style="border: 1px solid black;">budget:</th>
+               <th style="border: 1px solid black;">descreption:</th> 
+               <!-- <th style="border: 1px solid black;">created_at:</th>  -->
+               <!-- <th style="border: 1px solid black;">bidamount:</th> -->
+               <!-- <th style="border: 1px solid black;">converlet:</th> -->
+               <!-- <th style="border: 1px solid black;">submitted_at:</th> -->
+               <th style="border: 1px solid black;">action:</th>
+                   
+          </tr>
+          </p>
+          {% for x in data %}
+          <p>
+           
+               <tr>
+               
+                    <td style="border: 1px solid black;">{{x.id}}</td>
+                    <td style="border: 1px solid black;">{{x.title}}</td>
+                    <!-- <td style="border: 1px solid black;">{{x.username}}</td>
+                    <td style="border: 1px solid black;">{{x.email}}</td> -->
+                    <td style="border: 1px solid black;">{{x.created_by}}</td>
+                    <td style="border: 1px solid black;">{{x.budget}}</td>
+                    <td style="border: 1px solid black;">{{x.descreption}}</td>
+
+
+               
+               <td style="border: 1px solid black; background-color: rgba(107, 102, 102, 0.238);">
+                    <a href="delete/{{x.id}}"> <button class="btn btn-danger " type="button">Delete:</button></a>
+                    <a href="update/{{x.id}}"><button class="btn btn-primary " type="button">Update:</button></a>
+                    <a href="show_proposal/{{x.id}}"><button class="btn btn-success " type="button">show_proposal:</button></a>
+                    
+               </td>
+               </tr>
+          </p>
+          {% endfor %}
+     </table>
+
+     {% else %}
+
+    
+
+     <table>
+          <tr style="font-size: 20px; background-color:rgba(84, 78, 78, 0.128);">
+               <th style="border: 1px solid black;">ID</th>
+               <th style="border: 1px solid black;">Title:</th>
+               <!-- <th style="border: 1px solid black;">Username:</th>
+               <th style="border: 1px solid black;"> Email:</th> -->
+               <th style="border: 1px solid black;">created_by:</th>
+               <th style="border: 1px solid black;">budget:</th>
+               <th style="border: 1px solid black;">descreption:</th> 
+               <!-- <th style="border: 1px solid black;">created_at:</th>  -->
+               <!-- <th style="border: 1px solid black;">bidamount:</th> -->
+               <!-- <th style="border: 1px solid black;">converlet:</th> -->
+               <!-- <th style="border: 1px solid black;">submitted_at:</th> -->
+               <th style="border: 1px solid black;">action:</th>
+          </tr>
+          
+          {{data1.id}}
+          {% for x in data1 %}
+          <p>
+               <tr>
+                <a href="/inbox"> <button class="btn btn-success " type="button">Inbox</button></a>
+
+                    <td style="border: 1px solid black;">{{x.id}}</td>
+                    <td style="border: 1px solid black;">{{x.title}}</td>
+                    <!-- <td style="border: 1px solid black;">{{x.username}}</td>
+                    <td style="border: 1px solid black;">{{x.email}}</td> -->
+                    <td style="border: 1px solid black;">{{x.created_by}}</td>
+                    <td style="border: 1px solid black;">{{x.budget}}</td>
+                    <td style="border: 1px solid black;">{{x.descreption}}</td>
+
+
+               
+               <td style="border: 1px solid black;">
+                    <!-- <a href="delete/{{x.id}}"> <button class="btn btn-danger " type="button">Delete:</button></a>
+                    <a href="update/{{x.id}}"><button class="btn btn-info " type="button">Update:</button></a> -->
+                    <a href="add_proposal/{{x.id}}"> <button class="btn btn-success " type="button">Add_Proposal:</button class="btn btn-success"></a>
+                    
+               </td>
+               
+               
+          </tr>
+          </p>
+          
+             
+          {% endfor %}
+     </table>
+
+          
+     <a href="proposal_status"> <button class="btn btn-success " type="button">proposal_status:</button></a>
+
+     {% endif %}
+     
+
+     <a href="log_out"> <button class="btn btn-success " type="button">log_out:</button></a>
+     
+
+</body>
+<script>
+     window.onload = function() {
+       alert("Welcome to the page!");
+       // You can replace alert with other pop-up methods like a modal or a custom-designed pop-up.
+     };
+  </script>
+
+</html>

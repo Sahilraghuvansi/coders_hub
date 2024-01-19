@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/static.css">
+
+    <style>
+        body {
+            background-color: #c7ced6;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+            color: #007bff;
+        }
+
+        table {
+            width: 70%;
+            margin: auto;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        .status-accepted {
+            color: green;
+        }
+
+        .status-rejected {
+            color: rgb(177, 2, 2);
+        }
+
+        .status-pending {
+            color: rgb(5, 3, 3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>List:</h2>
+        <table>
+            <tr>
+                <th>Project_ID</th>
+                <th>Project_Title</th>
+                <th>Status</th>
+            </tr>
+            {% for x in data %}
+            <tr>
+                <td>{{ x.project_id }}</td>
+                <td>{{ x.project.title }}</td>
+                <td class="{% if x.status == '1' %}status-accepted{% elif x.status == '2' %}status-rejected{% else %}status-pending{% endif %}">
+                    {% if x.status == "1" %}
+                        {{ "Accepted" }}
+                    {% elif x.status == "2" %}
+                        {{ "Rejected" }}
+                    {% else %}
+                        {{ "Pending" }}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

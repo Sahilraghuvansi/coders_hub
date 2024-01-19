@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #cad3db;
+        }
+
+        table {
+            width: 70%;
+            margin: auto;
+            margin-top: 20px;
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #2b83e0;
+            color: #fff;
+        }
+
+        tr {
+            background-color: rgba(182, 176, 176, 0.919);
+        }
+
+        tr:hover {
+            background-color: rgba(128, 128, 128, 0.348);
+        }
+
+        .action-buttons {
+            float: left;
+            margin-left: 5px;
+        }
+
+        .action-buttons form {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Converlet</th>
+            <th>Bidamount</th>
+            <th>Action</th>
+        </tr>
+        {% for x in data %}
+        <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.freelancer.username}}</td>
+            <td>{{x.coverlet}}</td>
+            <td>{{x.amount}}</td>
+             <td class="action-buttons">
+                <form method="post" action="{% url 'accept_request' x.id %}">
+                    {% csrf_token %}
+                    <input type="hidden" value="1" name="accept">
+                    <button class="btn btn-success" type="submit">Accept</button> 
+                </form>
+            </td> 
+            <td class="action-buttons">
+                <form method="post" action="{% url 'reject_request' x.id %}">
+                    {% csrf_token %}
+                    <input type="hidden" value="2" name="reject">
+                    <button class="btn btn-danger" type="submit">Reject</button>
+                </form>
+            </td>
+            
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

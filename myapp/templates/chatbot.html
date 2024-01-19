@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  crossorigin="anonymous">
+
+<head>
+  <link rel="stylesheet" href="/static/static.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <div class="div">
+      <body>
+  <style>
+    
+    
+
+
+    body {
+      margin: 0 auto;
+      max-width: 60%;
+      background-color:#cad3db;
+    }
+
+    div {
+      background-color:#cad3db;
+    }
+
+
+    .container {
+      border: 2px solid #f4f0f0;
+      background-color: rgb(143, 241, 143);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: right ;
+      width: 250px;
+      margin-right: 5px;
+    }
+
+    .containers {
+      border: px solid #f6f1f1;
+      background-color: #bab5b3;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: left;
+      height: 90px;
+      width: 250px;
+      margin-left: 5px;
+    }
+
+
+    .darker {
+      border-color: #0a0000;
+      background-color: rgb(19, 243, 232);
+      text-align: left;
+    }
+
+    .container::after {
+      content: "";
+      clear: both;
+      display: table; 
+    }
+
+    .time-right {
+      float: right;
+      color: #000000;
+    }
+
+    .time-left {
+      float: left;
+      color: #000000;
+    }
+
+
+
+  </style>
+</head>
+
+
+  <h3 style="color: rgb(11, 11, 11);"> login id is {{login_id}}</h3>
+  <h1 style="color: rgb(8, 8, 8); text-align: center;">Chat Messages</h1>
+  {% for x in sender_chat %}
+  {% if x.sender_id == client %}
+  <div class="containers">
+    
+    <p>{{ x.mesg }}</p>
+    <span class="time-left">{{x.created_at}}</span>
+  </div>
+  {% else %}
+  <div class="container">
+    
+     <p>{{ x.mesg }} </p>
+    <span class="time-right">{{x.created_at}}</span>
+  </div>
+  {% endif %}
+  {% endfor %}
+
+<div class="form">
+  {% load crispy_forms_tags %}
+  {% block start %}
+  
+  <div class="content-section col-md-8 col-md-offset-2" style="color: rgb(14, 14, 14);">
+    <form method="post">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        {{ form|crispy}}
+  
+  
+        <input style="background-color: rgba(7, 251, 170, 0.814);" type="submit" value="Submit">
+    </form>
+  </div>
+  {% endblock start %}
+</div>
+
+</body>
+</div>
+
+
+<script>
+  function Bottom() {
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+  window.onload = Bottom;
+</script> 
+
+
+</html>
+
+
